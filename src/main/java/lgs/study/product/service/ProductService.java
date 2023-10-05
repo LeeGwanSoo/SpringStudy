@@ -5,4 +5,5 @@ import lgs.study.product.dto.ProductDto;
 public interface ProductService {
     ProductDto getProduct(String prdId);
 
+    ProductDto saveProduct(ProductDto productDto);
 }

@@ -13,7 +13,6 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductRepository productRepository;
 
-
     @Override
     public ProductDto getProduct(String prdId) {
 
@@ -26,4 +25,24 @@ public class ProductServiceImpl implements ProductService {
 
         return productDto;
     }
+
+    @Override
+    public ProductDto saveProduct(ProductDto productDto) {
+        ProductEntity productEntity = new ProductEntity();
+
+        productEntity.setPrdId(productDto.getPrdId());
+        productEntity.setPrdName(productDto.getPrdName());
+        productEntity.setStock(productDto.getStock());
+        productEntity.setPrice(productDto.getPrice());
+
+        productRepository.save(productEntity);
+
+        productDto.setPrdId(productEntity.getPrdId());
+        productDto.setPrdName(productEntity.getPrdName());
+        productDto.setStock(productEntity.getStock());
+        productDto.setPrice(productEntity.getPrice());
+
+        return null;
+    }
+
 }
