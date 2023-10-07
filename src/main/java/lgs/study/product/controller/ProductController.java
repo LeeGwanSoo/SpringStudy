@@ -6,6 +6,8 @@ import lgs.study.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ProductController {
 
@@ -24,4 +26,9 @@ public class ProductController {
         return productDto;
     }
 
+    @GetMapping(value = "/product/list")
+    public List<ProductDto> getProductList(){
+        List<ProductDto> productList = productService.getProductList();
+        return productList;
+    }
 }

@@ -2,16 +2,24 @@ package lgs.study.product.service.impl;
 
 import lgs.study.product.dto.ProductDto;
 import lgs.study.product.entity.ProductEntity;
+import lgs.study.product.mapper.ProductMapper;
 import lgs.study.product.repository.ProductRepository;
 import lgs.study.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    ProductMapper productMapper;
+
+
 
     @Override
     public ProductDto getProduct(String prdId) {
@@ -43,6 +51,11 @@ public class ProductServiceImpl implements ProductService {
         productDto.setPrice(productEntity.getPrice());
 
         return null;
+    }
+
+    @Override
+    public List<ProductDto> getProductList() {
+        return productMapper.getProductList();
     }
 
 }
