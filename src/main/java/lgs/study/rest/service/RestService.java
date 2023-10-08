@@ -1,8 +1,8 @@
 package lgs.study.rest.service;
 
-import java.util.Map;
+import lgs.study.rest.dto.WeatherDto;
 
 public interface RestService {
 
-    Map<String, String> getWeather(String city);
+    WeatherDto getWeather(String city);
 }

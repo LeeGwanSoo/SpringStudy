@@ -1,5 +1,6 @@
 package lgs.study.rest.service.Impl;
 
+import lgs.study.rest.dto.WeatherDto;
 import lgs.study.rest.service.RestService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -12,19 +13,14 @@ import java.util.Map;
 public class RestServiceImpl implements RestService {
 
     @Override
-    public Map<String, String> getWeather(String city) {
-
-        Map<String, String> result = new HashMap<String, String>();
+    public WeatherDto getWeather(String city) {
 
         RestTemplate restTemplate = new RestTemplate();
 
         String externalUrl = "https://goweather.herokuapp.com/weather/"+city; // 외부 URL 설정
 
-        ResponseEntity<String> response = restTemplate.getForEntity(externalUrl, String.class);
+        ResponseEntity<WeatherDto> response = restTemplate.getForEntity(externalUrl, WeatherDto.class);
 
-        String responseBody = response.getBody();
-
-        result.put("responseBody", responseBody.toString());
-        return result;
+        return response.getBody();
     }
 }
